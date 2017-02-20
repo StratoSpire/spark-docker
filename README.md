@@ -36,7 +36,7 @@ docker-compose down
 
 ```
 cd k8s
-./start.sh dev prem coae-sr1 <K8S_URL> <CLUSTER_ID> <NUMBER_OF_WORKERS> <CPUS_PER_WORKER> <MB_MEMORY_PER_WORKER>
+./start.sh <K8S_URL> <CLUSTER_ID> <NUMBER_OF_WORKERS> <CPUS_PER_WORKER> <MB_MEMORY_PER_WORKER>
 ```
 
 The Zeppelin URL will print as part of the start script and will look like:
@@ -46,7 +46,7 @@ The Zeppelin URL will print as part of the start script and will look like:
 
 ### Stop the Cluster
 ```
-./stop.sh dev prem coae-sr1 <K8S_URL> <CLUSTER_ID>
+./stop.sh <K8S_URL> <CLUSTER_ID>
 ```
 
 ### Example

@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: zeppelin
+  namespace: {{K8S_NAMESPACE}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: zeppelin
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: zeppelin
+    spec:
+      containers:
+        - name: zeppelin
+          image: stratospire/zeppelin:0.6.0
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m

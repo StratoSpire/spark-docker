@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: spark-worker
+  namespace: {{K8S_NAMESPACE}}
+spec:
+  replicas: {{NUM_WORKERS}}
+  selector:
+    matchLabels:
+      service: spark-worker
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        service: spark-worker
+    spec:
+      containers:
+        - name: spark-worker
+          image: stratospire/spark:2.0.0
+          command: ["/start-worker"]
+          ports:
+            - containerPort: 8081
+          resources:
+            limits:
+              memory: "{{WORKER_MEM}}Mi"
+              cpu: "{{WORKER_CPU}}"

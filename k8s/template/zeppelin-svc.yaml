@@ -1,0 +1,11 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: zeppelin
+  namespace: {{K8S_NAMESPACE}}
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    service: zeppelin

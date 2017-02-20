@@ -1,0 +1,31 @@
+version: '2'
+services:
+
+  spark-master:
+    image: stratospire/spark:2.0.0
+    cpu_quota: 10000
+    command: "/start-master"
+
+  spark-slave:
+    image: stratospire/spark:2.0.0
+    command: "/start-worker"
+    depends_on:
+      - spark-master
+
+  spark-ui-proxy:
+    image: elsonrodriguez/spark-ui-proxy:1.0
+    cpu_quota: 10000
+    ports:
+      - "80:80"
+    command: spark-master:8080
+    depends_on:
+      - spark-master
+
+  zeppelin:
+    image: stratospire/zeppelin:0.6.0
+    cpu_quota: 10000
+    ports:
+      - "8080:8080"
+    depends_on:
+      - spark-master
+      - spark-slave

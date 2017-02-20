@@ -1,5 +1,7 @@
 FROM java:openjdk-8-jdk
 
+MAINTAINER Ryan C Koch <ryanckoch@gmail.com>
+
 ENV SPARK_VERSION="2.0.0" \
     HADOOP_MAJOR_VERSION="2.7" \
     HADOOP_VERSION="2.7.3"

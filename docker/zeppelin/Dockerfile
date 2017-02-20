@@ -17,6 +17,8 @@
 
 FROM stratospire/spark:2.0.0
 
+MAINTAINER Ryan C Koch <ryanckoch@gmail.com>
+
 ENV ZEPPELIN_VERSION="0.6.2"
 
 RUN mkdir -p /opt && \

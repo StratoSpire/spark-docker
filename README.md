@@ -46,7 +46,7 @@ The Zeppelin URL will print as part of the start script and will look like:
 
 ### Stop the Cluster
 ```
-./stop.sh dev prem coae-sr1 <K8S_URL> <USER_ID>
+./stop.sh dev prem coae-sr1 <K8S_URL> <CLUSTER_ID>
 ```
 
 ### Example
